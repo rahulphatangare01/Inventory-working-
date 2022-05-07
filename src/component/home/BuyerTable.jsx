@@ -37,6 +37,8 @@ const style = {
 const BuyerTable = () => {
 
   const [data, SetData] = useState([]);
+ 
+
   const [updateData, SetUpdateData] = useState({
     companyName: "",phone: "",ownerName: "",email: "",productName: "",
     stock: "",address: "",country: "",state: "",zip: "",pan: "",});

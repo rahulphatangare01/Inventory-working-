@@ -76,9 +76,9 @@ const Sidebar = () => {
 								<ListItemText primary="Dashboard" />
 							</ListItem>
 
-							<ListItem button key="Product" onClick = {()=>movetopage('/productinfo')}  >
+							<ListItem button key="Stock" onClick = {()=>movetopage('/productinfo')}  >
 								<CategoryIcon style={icons_styls_icons} />
-								<ListItemText primary="Product" />
+								<ListItemText primary="Stock" />
 							</ListItem>
  
 							<ListItem button key="Sell"  >
@@ -86,10 +86,7 @@ const Sidebar = () => {
 								<ListItemText primary="Sell" />
 							</ListItem>
 
-							<ListItem button key="Stock"  >
-								<Inventory2Icon style={icons_styls_icons} />
-								<ListItemText primary="Stock" />
-							</ListItem>
+							
 
 							<ListItem button key="Invoice"   >
 								<DescriptionIcon style={icons_styls_icons} />

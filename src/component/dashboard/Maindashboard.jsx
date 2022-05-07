@@ -1,11 +1,11 @@
-import * as React from 'react';
+import  React, { useState,useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import PeiChartCompo from './PieChart'
- 
+ import axios from 'axios'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,6 +16,35 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Maindashboard = () => {
+
+const [data , SetData] = useState ([])
+const [buyerdata, SetBuyerData] =useState([])
+console.log(buyerdata)
+// create a config to send the auth token 
+const config = {
+  headers: {
+// we are finding the token from localstorage
+    Authorization: localStorage.getItem("token"),
+  },
+};
+// axios call for Get  buyer information
+useEffect(() => {
+  axios.get("http://localhost:8080/buyer/getbuyer", config).then((res) => {
+    SetBuyerData(res.data);
+  });
+}, []);
+
+  // axios request for getting product Detail 
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/product/getproduct", config)
+      .then((res) => { 
+  
+
+        SetData(res.data);
+      });
+  }, []);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       {/* boxes for grid */}
@@ -64,7 +93,8 @@ const Maindashboard = () => {
               Buyer Count
             </Typography>
             <Typography variant='h3' align='center' sx={{ padding: "10px", color: "#FFFF" }}>
-              33
+            { buyerdata.length}
+              
             </Typography>
           </Box>
         </Grid>
@@ -87,7 +117,7 @@ const Maindashboard = () => {
               Product
             </Typography>
             <Typography variant='h3' align='center' sx={{ padding: "10px", color: "#FFFF" }}>
-              568
+              {data.length}
             </Typography>
           </Box>
         </Grid>
@@ -155,7 +185,11 @@ const Maindashboard = () => {
        Stock 
             </Typography>
             <Typography variant='h4' align='center' sx={{ padding: "10px", color: "#FFFF" }}>
-        2547
+           
+             {
+               data.reduce((amount,item)=>item.quantity + amount,0)
+             }
+           
             </Typography>
           </Box>
         </Grid>

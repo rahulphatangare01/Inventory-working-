@@ -16,6 +16,8 @@ import BuyerInfo from './component/home/BuyerInfo';
 import BuyerTable from './component/home/BuyerTable';
 import SupplierInfo from './component/home/SupplierInfo';
 import SupplierTable from './component/home/SupplierTable';
+import User from './component/home/User';
+
 
 
 
@@ -56,6 +58,10 @@ const App = () => {
               <Route path="/buyertable" element={ < BuyerTable/>}/>
               <Route path="/supplier" element={ < SupplierInfo/>}/>
               <Route path="/suppliertable" element={ < SupplierTable/>}/>
+              <Route path="/user" element={ < User/>}/>
+
+              
+
 
 
 

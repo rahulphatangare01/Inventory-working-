@@ -96,6 +96,11 @@ const handle_delete = (id) => {
         axios
           .get("http://localhost:8080/product/getproduct", config)
           .then((res) => {
+          let len = res.data
+          for (const iterator of len) {
+            console.log (iterator.quantity)
+          }
+        
             SetData(res.data);
           });
       }, []);
